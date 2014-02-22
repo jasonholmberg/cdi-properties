@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${jar.name}" default="build" basedir="../">
+
+  <description>Build jar for NeededRest</description>
+
+  <property file="ant/build.properties" />
+  <property name="docs.dir" location="docs" />
+  <property name="project.lib.loc" location="${user.home}/${project.lib.dir}" />
+  <property name="server.home" location="${user.home}/${server.loc}" />
+  <property name="server.lib.dir" location="${server.home}/lib" />
+  <property name="jar.file" value="${jar.name}.jar" />
+
+  <property file="ant/lib.properties" />
+  
+  <propertyset id="compile.libs">
+    <propertyref prefix="compilelib." />
+  </propertyset>
+  <pathconvert refid="compile.libs" property="compile.libs" pathsep="," />
+  <echo>${compile.libs}</echo>
+
+  <path id="compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="*.jar" />
+    </fileset>
+    <fileset dir="${server.lib.dir}">
+      <include name="*.jar" />
+    </fileset>
+    <filelist files="${compile.libs}"></filelist>
+  </path>
+
+  <target name="build" depends="compile,jar" />
+  <target name="deploy" depends="compile,jar,copy" />
+
+  <!--target name="clean" description="clean up">
+    <delete dir="${deploy.loc}" includes="${jar.name}.*" />
+  </target-->
+
+  <target name="compile" description="compile the source ">
+    <delete dir="${dist.dir}" />
+    <delete dir="${build.dir}" />
+    <delete dir="${docs.dir}" />
+    <mkdir dir="${dist.dir}" />
+    <mkdir dir="${build.dir}/classes" />
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}/classes" excludes="test/" debug="on" debuglevel="lines,vars,source">
+      <classpath refid="compile.classpath" />
+    </javac>
+    <copy todir="${build.dir}/classes">
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+      <fileset dir="${config.dir}" includes="*.properties" />
+    </copy>
+  </target>
+
+  <target name="jar">
+    <jar destfile="${dist.dir}/${jar.file}">
+      <fileset dir="${build.dir}/classes" />
+      <fileset dir="${build.dir}/classes" includes="*.properties" />
+      <metainf dir="${src.dir}/META-INF" includes="*.xml" />
+    </jar>
+  </target>
+
+  <target name="copy">
+    <copy file="${dist.dir}/${jar.file}" todir="${project.lib.loc}" />
+  </target>
+</project>
