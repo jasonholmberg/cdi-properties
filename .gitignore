@@ -3,5 +3,10 @@
 /ant-build
 /ant/build.properties
 /bin
-
+/build.xml
 /nbproject
+.nb-gradle*
+.gradle
+.settings
+.classpath
+.project

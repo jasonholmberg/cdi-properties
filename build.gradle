@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.6'
+    }
+}
+
+project.group = 'elfon'
+project.version = '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.7'
+	
+	runtime 'org.slf4j:slf4j-simple:1.7.7'
+	runtime 'ch.qos.logback:logback-classic:1.1.2'
+	
+	provided 'javax:javaee-api:6.0'
+}

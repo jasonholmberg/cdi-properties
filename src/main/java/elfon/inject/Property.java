@@ -12,7 +12,7 @@ import elfon.producer.impl.DefaultConfigurationProducer;
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Property {
-    Class<? extends ConfigurationProducer> producer() default DefaultConfigurationProducer.class;
+    @Nonbinding Class<? extends ConfigurationProducer> producer() default DefaultConfigurationProducer.class;
     @Nonbinding String name() default "";
     @Nonbinding boolean required() default false;
     @Nonbinding String defaultValue() default "";

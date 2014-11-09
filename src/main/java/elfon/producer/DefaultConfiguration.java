@@ -2,14 +2,14 @@ package elfon.producer;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DefaultConfiguration
   implements Configuration
 {
 
-  private static final Logger LOG = Logger.getLogger(DefaultConfiguration.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DefaultConfiguration.class);
 
   public DefaultConfiguration()
   {

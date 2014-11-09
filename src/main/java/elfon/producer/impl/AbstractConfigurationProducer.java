@@ -3,18 +3,18 @@ package elfon.producer.impl;
 import java.text.MessageFormat;
 import java.util.MissingResourceException;
 
-import javax.enterprise.inject.spi.InjectionPoint;
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import elfon.inject.Property;
 import elfon.producer.ConfigurationProducer;
+import javax.enterprise.inject.spi.InjectionPoint;
 
 public abstract class AbstractConfigurationProducer
   implements ConfigurationProducer
 {
 
-  private static final Logger LOG = Logger.getLogger(AbstractConfigurationProducer.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigurationProducer.class);
   
   static final String INVALID_NAME = "Invalid property name '{0}'";
   static final String REQUIRED_PARAM_MISSING = "No definition found for a mandatory configuration parameter : '{0}'";
