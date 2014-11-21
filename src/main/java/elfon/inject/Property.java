@@ -8,11 +8,14 @@ import javax.inject.Qualifier;
 
 import elfon.producer.ConfigurationProducer;
 import elfon.producer.impl.DefaultConfigurationProducer;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD,ElementType.FIELD})
 public @interface Property {
-    @Nonbinding Class<? extends ConfigurationProducer> producer() default DefaultConfigurationProducer.class;
+    Class<? extends ConfigurationProducer> producer() default DefaultConfigurationProducer.class;
     @Nonbinding String name() default "";
     @Nonbinding boolean required() default false;
     @Nonbinding String defaultValue() default "";
