@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 import java.util.MissingResourceException;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import elfon.inject.Property;
 import elfon.producer.ConfigurationProducer;
