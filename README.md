@@ -1,6 +1,6 @@
 # cdi-properties #
 
-Context and Dependency Injection (CDI) does not supply a built in utility for injecting property values from properties files into fields, methods or parameters.  This can be very useful and library provides the and annotation and support classes to make this happen.
+Context and Dependency Injection (CDI) does not supply a built in utility for injecting property values from properties files into fields, methods or parameters.  This can be very useful and this library provides the and annotation and supporting classes to make this happen.
 
 ## Configuration ##
 A system property named `config.base.name` is expected to be present, unless you create your own implementation of Configuration and pick a different System Property name.  The value of this property should be the base-name of the property file.  This library makes us of the ResourceBundle API, so these properties will benefit from localization, although, this is not necessarily a localization utility. For example, if you are putting properties in a file named: `myProperties.properties`, then the `config.base.name` should be `myProperties`.  Reference your container on how to specifically provide System properties. The properties file need to be in the class path of your web applications.
