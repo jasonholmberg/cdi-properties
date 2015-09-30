@@ -1,3 +1,5 @@
+9/30/2015 - Moved to GitHub (https://github.com/slowtrailrunner/cdi-properties)
+
 # cdi-properties #
 
 Context and Dependency Injection (CDI) does not supply a built in utility for injecting property values from properties files into fields, methods or parameters.  This can be very useful and this library provides the and annotation and supporting classes to make this happen.
